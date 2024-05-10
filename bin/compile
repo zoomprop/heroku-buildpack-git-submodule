@@ -5,7 +5,6 @@ ENV_DIR="$3"
 
 # load required environment variables
 GIT_REPO_URL=$(<"$ENV_DIR/GIT_REPO_URL")
-GIT_SSH_KEY=$(<"$ENV_DIR/GIT_SSH_KEY")
 GITHUB_PAT=$(<"$ENV_DIR/GITHUB_PAT")
 
 if [[ -z $GIT_REPO_URL ]]; then
@@ -13,10 +12,6 @@ if [[ -z $GIT_REPO_URL ]]; then
     exit 1
 fi
 
-if [[ -z $GIT_SSH_KEY ]]; then
-    echo "Did you forget to set GIT_SSH_KEY?"
-    exit 1
-fi
 
 if [[ -z $GITHUB_PAT ]]; then
     echo "Did you forget to set GITHUB_PAT?"
@@ -28,4 +23,4 @@ cd "$APP_DIR"
 
 cd app/
 rm -rf orm_models
-git clone "https://$GITHUB_PAT@github.com/zoomprop/orm-models.git" orm_models
+git clone "https://$GITHUB_PAT@$GIT_REPO_URL" orm_models
