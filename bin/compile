@@ -22,4 +22,4 @@ cd "$APP_DIR"
 
 cd app/
 rm -rf orm_models
-git clone -b fastapi --single-branch "https://$GITHUB_PAT@$GIT_REPO_URL" orm_models
+git clone "https://$GITHUB_PAT@$GIT_REPO_URL" orm_models
